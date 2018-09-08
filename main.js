@@ -15,9 +15,14 @@ var button = document.querySelector('#button');
 var outer = document.querySelector('#outer');
 
 button.addEventListener('click', function() {
-	loadFile('data.txt')
+	loadFile('data1.txt')
 		.then( function(value) {
 			console.log('Принятый объект:', value);
 			outer.textContent = value;
 		});
+
+		return loadFile('data2.txt')
+			.then( function(value) {				
+				outer.textContent += '\n' + value;
+			});
 });
